@@ -102,6 +102,7 @@ fi
 if [ -n "$GITEE_PERSONAL_TOKEN" ]
 then
   git init
+  git remote rm origin
   git remote add origin "${REPOSITOGITEE_REPOSITORY_PATHRY_PATH}"
   git checkout --orphan "${GITEE_TARGET_BRANCH}"
   git add .
