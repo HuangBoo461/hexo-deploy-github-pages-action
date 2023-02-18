@@ -1,6 +1,7 @@
 #!/bin/sh -l
 
 set -e
+set -x
 
 # check values
 
