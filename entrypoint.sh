@@ -53,7 +53,7 @@ npx hexo clean
 echo ">>> Generate file ..."
 npx hexo generate
 
-cp "${TARGET_PUBLISH_DIR}" "${GITEE_TARGET_PUBLISH_DIR}"
+cp -r "${TARGET_PUBLISH_DIR}" "${GITEE_TARGET_PUBLISH_DIR}"
 
 cd "${TARGET_PUBLISH_DIR}"
 
