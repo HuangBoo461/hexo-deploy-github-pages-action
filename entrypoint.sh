@@ -23,6 +23,8 @@ else
     TARGET_PUBLISH_DIR="./public"
 fi
 
+GITEE_TARGET_PUBLISH_DIR="${TARGET_PUBLISH_DIR}_gitee"
+
 if [ -z "$PERSONAL_TOKEN" ]
 then
   echo "You must provide the action with either a Personal Access Token or the GitHub Token secret in order to deploy."
@@ -51,6 +53,8 @@ npx hexo clean
 
 echo ">>> Generate file ..."
 npx hexo generate
+
+cp "${TARGET_PUBLISH_DIR}" "${GITEE_TARGET_PUBLISH_DIR}"
 
 cd "${TARGET_PUBLISH_DIR}"
 
@@ -83,7 +87,7 @@ cd ..
 
 GITEE_REPOSITORY_PATH="https://oauth2:${PERSONAL_TOKEN}@github.com/${TARGET_REPOSITORY}.git"
 
-cd "${TARGET_PUBLISH_DIR}"
+cd "${GITEE_TARGET_PUBLISH_DIR}"
 
 if [ -n "${GITEE_PUBLISH_REPOSITORY}" ]; then
     GITEE_TARGET_REPOSITORY=${GITEE_PUBLISH_REPOSITORY}
@@ -98,7 +102,6 @@ fi
 
 if [ -n "$GITEE_PERSONAL_TOKEN" ]
 then
-  rm -rf ./git
   git init
   git remote add origin "${REPOSITOGITEE_REPOSITORY_PATHRY_PATH}"
   git checkout --orphan "${GITEE_TARGET_BRANCH}"
