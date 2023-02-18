@@ -1,7 +1,6 @@
 #!/bin/sh -l
 
 set -e
-set -x
 
 # check values
 
@@ -82,7 +81,7 @@ git push -u origin "${TARGET_BRANCH}" --force
 
 echo ">>> Deployment successful!"
 
-echo "Start Sync To Gitee"
+echo "开始推送至 Gitee"
 cd ..
 
 cd "${GITEE_TARGET_PUBLISH_DIR}"
@@ -105,6 +104,9 @@ then
   git remote add origin "${GITEE_REPOSITORY_PATH}"
   git checkout --orphan "${GITEE_TARGET_BRANCH}"
   git add .
+  echo '>>> 开始提交 ...'
   git commit --allow-empty -m "Building and deploying Hexo project from Github Action"
+  echo '>>> 开始推送 ...'
   git push -u origin "${GITEE_TARGET_BRANCH}" --force
+  echo ">>> 发布完成!"
 fi
