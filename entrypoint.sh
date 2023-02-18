@@ -85,8 +85,6 @@ echo ">>> Deployment successful!"
 echo "Start Sync To Gitee"
 cd ..
 
-GITEE_REPOSITORY_PATH="https://oauth2:${PERSONAL_TOKEN}@github.com/${TARGET_REPOSITORY}.git"
-
 cd "${GITEE_TARGET_PUBLISH_DIR}"
 
 if [ -n "${GITEE_PUBLISH_REPOSITORY}" ]; then
@@ -102,6 +100,7 @@ fi
 
 if [ -n "$GITEE_PERSONAL_TOKEN" ]
 then
+  GITEE_REPOSITORY_PATH="https://oauth2:${GITEE_PERSONAL_TOKEN}@gitee.com//${GITEE_TARGET_REPOSITORY}.git"
   git init
   git remote add origin "${GITEE_REPOSITORY_PATH}"
   git checkout --orphan "${GITEE_TARGET_BRANCH}"
