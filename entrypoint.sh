@@ -103,7 +103,7 @@ fi
 if [ -n "$GITEE_PERSONAL_TOKEN" ]
 then
   git init
-  git remote add origin "${REPOSITOGITEE_REPOSITORY_PATHRY_PATH}"
+  git remote add origin "${GITEE_REPOSITORY_PATH}"
   git checkout --orphan "${GITEE_TARGET_BRANCH}"
   git add .
   git commit --allow-empty -m "Building and deploying Hexo project from Github Action"
