@@ -23,7 +23,7 @@ jobs:
     - name: Build and Deploy
       uses: HuangBoo461/hexo-deploy-github-pages-action@master
       env:
-      	# github静态推送时需要用的Access Toekn
+        # github静态推送时需要用的Access Toekn
         PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         # github静态页面仓库路径.
         PUBLISH_REPOSITORY: theme-keep/site
